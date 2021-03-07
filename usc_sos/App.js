@@ -1,6 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, Linking, TouchableOpacity, Platform } from 'react-native';
+import { StyleSheet, Text, View, Button, Linking, Platform, Input, TouchableOpacity } from 'react-native';
+
+// import firebase from "firebase/app";
+// import "firebase/analytics";
 
 export default class App extends Component {
   constructor(){
@@ -31,10 +34,15 @@ export default class App extends Component {
         <Text style={styles.title}>Welcome to {"\n"} USC SOS! {"\n"}</Text>
         <Text style={styles.bodyText}>The place that bundles up emergency contacts to{"\n"} keep you safe :)</Text>
         <View style={{alignItems:'center', justifyContent:'center'}}>
-        <Button title="Call USC_SOS" size="lg" color='#bd2031' textAlign='center' onPress={()=>{this.dialCall(+12133751230)}}>
-          <Text style={{marginLeft:50}}>Call USC_SOS</Text>
-        </Button>
-          <Text style={{color:'white'}}>{this.props.Name}</Text>
+          <TouchableOpacity
+            style={styles.customBtnBG}
+            onPress={()=>{this.dialCall(+12133751230)}}>
+              <Text style={styles.customBtnText}>Call USC SOS</Text>
+            </TouchableOpacity>
+        {/* <Button title="Call USC_SOS" size="lg" color='#EDCD30' style={{ fontSize: 30}} textAlign='center' onPress={()=>{this.dialCall(+12133751230)}}>
+          <Text style={{marginLeft:50}}>Call <b>USC SOS</b></Text>
+        </Button> */}
+          {/* <Text style={{color:'white'}}>{this.props.Name}</Text> */}
         </View>
       </View>
     );
@@ -45,7 +53,7 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#A5CBCE',
+    backgroundColor: '#bd2031',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -53,13 +61,15 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: '700',
     textAlign: 'center',
-    marginBottom: 20
+    marginBottom: 20, 
+    color: "#ffffff"
   },
   bodyText:{
     fontSize: 20,
     fontWeight: '300',
     textAlign: 'center',
-    marginBottom: 30
+    marginBottom: 30,
+    color: "#d9d9d9"
   },
   buttonContainer: {
     flexDirection: 'row',
@@ -69,7 +79,21 @@ const styles = StyleSheet.create({
     paddingTop: 20, 
     paddingBottom: 20, 
     borderColor: "#bd2031"
+  },
+  //style the text of button
+  customBtnText: {
+    fontSize: 30,
+    fontWeight: '600',
+    color: '#bd2031'
+  },
+  //style the background of Button
+  customBtnBG: {
+    backgroundColor: "#EDCD30",
+    paddingHorizontal: 30,
+    paddingVertical: 5,
+    borderRadius: 30
   }
+  //
   // appButtonContainer: {
   //   elevation: 8,
   //   backgroundColor: "#bd2031",
